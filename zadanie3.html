@@ -4,21 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kacper Kondracki</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="zadanie1.js" defer></script>
+    <title>Zadanie 3</title>
+    <script src="zadanie3.js" defer></script>
   </head>
   <body>
     <header>
       <nav>
         <ul>
-          <li><a href="index.html">Zadanie 1</a></li>
+          <li><a href="zadanie1.html">Zadanie 1</a></li>
           <li><a href="zadanie2.html">Zadanie 2</a></li>
           <li><a href="zadanie3.html">Zadanie 3</a></li>
         </ul>
       </nav>
     </header>
+    <p>zadanie 3</p>
+    <form id="search-form">
+      <input
+        id="search-input"
+        type="text"
+        name="query"
+        autocomplete="off"
+        placeholder="Search images..."
+      />
+      <button type="submit">Search</button>
+    </form>
 
-    <div id="content"></div>
+    <ul id="gallery"></ul>
   </body>
 </html>
