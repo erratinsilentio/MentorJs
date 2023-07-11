@@ -1,3 +1,13 @@
+:root {
+  --bg-violet: #5b21b6;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .menu-options {
   width: 500px;
   height: 30px;
@@ -17,4 +27,27 @@ a {
 
 a:hover {
   color: darkmagenta;
+}
+
+input {
+  border: 3px solid var(--bg-violet);
+  border-radius: 5px;
+  height: 40px;
+  width: 200px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+button {
+  height: 46px;
+  width: 80px;
+  background-color: var(--bg-violet);
+  border: 0px;
+  border-radius: 5px;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.75);
 }
