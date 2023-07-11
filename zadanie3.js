@@ -2,19 +2,24 @@ const form = document.getElementById("search-form");
 const input = document.getElementById("search-input");
 const gallery = document.getElementById("gallery");
 
+const observedElement = document.createElement("li");
+gallery.appendChild(observedElement);
+
 let page = 1;
 let loading = false;
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
+
+  page = 1;
+  gallery.innerHTML = "";
+  gallery.appendChild(observedElement);
+
   const query = input.value;
   loadImages(query);
 });
 
 const observer = new IntersectionObserver(handleIntersection);
-
-const observedElement = document.createElement("li");
-gallery.appendChild(observedElement);
 
 observer.observe(observedElement);
 
@@ -60,17 +65,23 @@ async function loadImages(query) {
 function displayImages(images) {
   images.forEach((image) => {
     const listItem = document.createElement("li");
-    const link = document.createElement("a");
     const img = document.createElement("img");
-
-    link.href = image.largeImageURL;
 
     img.src = image.webformatURL;
     img.alt = image.tags;
     img.dataset.source = image.largeImageURL;
 
-    link.appendChild(img);
-    listItem.appendChild(link);
+    listItem.onclick = () => {
+      basicLightbox
+        .create(
+          `
+        <img width="1400" height="900" src="${image.largeImageURL}">
+      `
+        )
+        .show();
+    };
+
+    listItem.appendChild(img);
     gallery.insertBefore(listItem, observedElement);
   });
 }

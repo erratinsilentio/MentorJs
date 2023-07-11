@@ -1,0 +1,22 @@
+.menu-options {
+  width: 500px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom: 2px solid violet;
+}
+.menu-btn {
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: initial;
+}
+
+a:hover {
+  color: darkmagenta;
+}
