@@ -31,9 +31,7 @@ async function handleIntersection(entries) {
   if (entries[0].isIntersecting && !loading) {
     page++;
     const query = input.value;
-    console.log("Loading more images...");
     await loadImages(query);
-    console.log("Images loaded!");
   }
 }
 
