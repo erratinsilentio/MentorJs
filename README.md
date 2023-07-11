@@ -6,6 +6,20 @@ Zdecydowałem się nie korzystać z żadnego bundlera pokroju Vite czy Webpack -
 
 ## Zadanie 1
 
+Zgodnie z zaleceniami, tworzymy klasę o nazwie StringBuilder. Przy definiowaniu klasy uzywamy tzw. konstruktora, który przyjmuje wartości jakich chcemy uzyc tworząc nowy obiekt klasy. W tym przypadku jest to baseString, z domyślną wartością równą "", czyli pustemu stringowi. Domyślna wartość będzie uzyta jeśli nie określimy jej przy tworzeniu obiektu. Wartość baseString przypisujemy do właściwości obiektu nazwanej "value".
+
+Następnie definiujemy metody klasy, czyli odpowiednio append, prepend i pad:
+
+- W append przyjmujemy parametr 'str', którego uzywamy do zmodyfikowania właściwości value. Chcemy dodać parametr na koniec value, co mozemy zrobić poprzez dodawanie, w tym przypadku skrócone za pomocą operatora '+='. Następnie zwracamy this, co pozwoli nam na wywołanie kolejnych metod funkcji jedna po drugiej.
+
+- Analogicznie w prepend, dodajemy paratetr 'str' na początek value, zamiast na końcu.
+
+- Podobnie jak w powyzszych przykładach, w metodzie pad dodajemy str dwukrotnie, na początku i na końcu value.
+
+W kazdej z metod, tworzymy tez nową, zmodyfikowaną zmienną o nazwie formattedStr, która podany wcześniej parametr zamienia na String. To na wypadek, gdyby podana została np. liczba - wtedy metody działałyby w niepoządany sposób.
+
+Idąc za przykładem podanym w treści zadania, tworzymy nowy obiekt klasy StringBuilder, i za pomocą zdefiniowanych wcześniej metod modyfikujemy właściwośc value obiektu. Na koniec wyświetlamy value w konsoli, by przekonać się czy metody działają poprawnie.
+
 ## Zadanie 2
 
 W tym zadaniu zaczynamy od deklaracji naszych zmiennych - czyli referencji do elementów html naszej strony (input, przyciski, oraz div#boxes), oraz określamy dwie dodatkowe zmienne.

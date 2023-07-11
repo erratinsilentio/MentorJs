@@ -4,17 +4,20 @@ class StringBuilder {
   }
 
   append(str) {
-    this.value += str;
+    let formattedStr = String(str);
+    this.value += formattedStr;
     return this;
   }
 
   prepend(str) {
-    this.value = str + this.value;
+    let formattedStr = String(str);
+    this.value = formattedStr + this.value;
     return this;
   }
 
   pad(str) {
-    this.value = str + this.value + str;
+    let formattedStr = String(str);
+    this.value = formattedStr + this.value + formattedStr;
     return this;
   }
 }
