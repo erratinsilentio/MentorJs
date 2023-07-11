@@ -2,38 +2,62 @@ const form = document.getElementById("search-form");
 const input = document.getElementById("search-input");
 const gallery = document.getElementById("gallery");
 
+let page = 1;
+let loading = false;
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   const query = input.value;
-  console.log(query);
-  searchImages(query);
+  loadImages(query);
 });
 
-async function searchImages(query) {
+const observer = new IntersectionObserver(handleIntersection);
+
+const observedElement = document.createElement("li");
+gallery.appendChild(observedElement);
+
+observer.observe(observedElement);
+
+async function handleIntersection(entries) {
+  if (!observedElement.previousElementSibling) {
+    return;
+  }
+
+  if (entries[0].isIntersecting && !loading) {
+    page++;
+    const query = input.value;
+    console.log("Loading more images...");
+    await loadImages(query);
+    console.log("Images loaded!");
+  }
+}
+
+async function loadImages(query) {
+  loading = true;
+
   const apiKey = "38193819-c339577d072b6322761c9fe84";
   const apiUrl = `https://pixabay.com/api/?key=${apiKey}&q=${encodeURIComponent(
     query
-  )}&per_page=20`;
+  )}&per_page=20&page=${page}`;
 
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    console.log(data);
     if (data.hits.length > 0) {
       displayImages(data.hits);
     } else {
-      gallery.innerHTML = "<li>No images found</li>";
+      gallery.innerHTML = "<li>No more images found</li>";
     }
   } catch (error) {
     console.error("Oops! There is an error: ", error);
-    gallery.innerHTML = "<li>Oops! We have an error;(</li>";
+    gallery.innerHTML = "<li>Oops! We have an error ;(</li>";
   }
+
+  loading = false;
 }
 
 function displayImages(images) {
-  gallery.innerHTML = "";
-
   images.forEach((image) => {
     const listItem = document.createElement("li");
     const link = document.createElement("a");
@@ -47,6 +71,6 @@ function displayImages(images) {
 
     link.appendChild(img);
     listItem.appendChild(link);
-    gallery.appendChild(listItem);
+    gallery.insertBefore(listItem, observedElement);
   });
 }
