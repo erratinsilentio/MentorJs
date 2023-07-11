@@ -5,20 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kacper Kondracki</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="style.css" />
     <script src="zadanie2.js" defer></script>
   </head>
   <body>
     <header>
       <nav>
         <ul>
-          <li><a href="index.html">Zadanie 1</a></li>
-          <li><a href="zadanie2.html">Zadanie 2</a></li>
-          <li><a href="zadanie3.html">Zadanie 3</a></li>
+          <li class="menu-btn"><a href="zadanie1.html">Zadanie 1</a></li>
+          <li class="menu-btn"><a href="zadanie2.html">Zadanie 2</a></li>
+          <li class="menu-btn"><a href="zadanie3.html">Zadanie 3</a></li>
         </ul>
       </nav>
     </header>
 
-    <div id="content"></div>
+    <div id="controls">
+      <input type="number" min="0" max="100" step="1" class="js-input" />
+      <button type="button" data-action="create" id="create-btn">Utwórz</button>
+      <button type="button" data-action="destroy" id="delete-btn">Usuń</button>
+    </div>
+
+    <div id="boxes"></div>
   </body>
 </html>
